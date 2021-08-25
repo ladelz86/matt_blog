@@ -73,7 +73,7 @@ class BlogPost(db.Model):
     body = db.Column(db.Text, nullable=False)
     img_url = db.Column(db.String(250), nullable=False)
     # Many blog posts to one user
-    author_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), foreign_key=True, nullable=False)
+    author_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     author = relationship("User", back_populates="blog_posts")
     # One Blog post many comments
     comments = relationship("Comment", back_populates="parent_post", cascade="all, delete", passive_deletes=True)
@@ -84,10 +84,10 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.Text, nullable=False)
     # Many comments one author
-    author_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), foreign_key=True, nullable=False)
+    author_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     author = relationship("User", back_populates="comments")
     # Many comments one post
-    post_id = db.Column(db.Integer, db.ForeignKey("blog_posts.id", ondelete="CASCADE"), foreign_key=True, nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey("blog_posts.id", ondelete="CASCADE"), nullable=False)
     parent_post = relationship("BlogPost", back_populates="comments")
 
 
