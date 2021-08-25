@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, redirect, url_for, flash, request, abort, session
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
@@ -12,7 +13,6 @@ from functools import wraps
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
 from datetime import datetime as dt
-import os
 
 load_dotenv()
 
