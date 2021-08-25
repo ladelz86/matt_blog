@@ -10,9 +10,9 @@ from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm, EmailFor
 from flask_gravatar import Gravatar
 from functools import wraps
 from flask_mail import Mail, Message
-import os
 from dotenv import load_dotenv
 from datetime import datetime as dt
+import os
 
 load_dotenv()
 
@@ -40,7 +40,7 @@ app.config["MAIL_PASSWORD"] = os.environ.get("PASS_GMAIL")
 mail = Mail(app)
 
 # CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 login_manager = LoginManager()
