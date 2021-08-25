@@ -40,7 +40,10 @@ app.config["MAIL_PASSWORD"] = os.environ.get("PASS_GMAIL")
 mail = Mail(app)
 
 # CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URI")
+db = os.environ.get("DATABASE_URL")
+if "postgres" in db:
+    db.replace("://", "ql://", 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = db
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 login_manager = LoginManager()
