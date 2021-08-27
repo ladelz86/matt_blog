@@ -35,8 +35,8 @@ gravatar = Gravatar(app,
 app.config["MAIL_SERVER"] = "smtp.mail.yahoo.com"
 app.config["MAIL_PORT"] = 587
 app.config["MAIL_USE_TLS"] = True
-app.config["MAIL_USERNAME"] = os.environ.get("GMAIL_ADDR")
-app.config["MAIL_PASSWORD"] = os.environ.get("PASS_GMAIL")
+app.config["MAIL_USERNAME"] = os.environ.get("EMAIL_ADDR")
+app.config["MAIL_PASSWORD"] = os.environ.get("EMAIL_PASS")
 mail = Mail(app)
 
 # CONNECT TO DB
